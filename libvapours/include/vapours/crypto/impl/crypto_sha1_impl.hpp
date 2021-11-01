@@ -18,7 +18,6 @@
 #include <vapours/common.hpp>
 #include <vapours/assert.hpp>
 #include <vapours/util.hpp>
-#include <vapours/crypto/impl/crypto_hash_function.hpp>
 #include <vapours/crypto/crypto_memory_clear.hpp>
 
 

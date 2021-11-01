@@ -42,6 +42,7 @@ namespace ams::hos {
             /* To be friendly, we will only require that we recognize the major and minor versions. */
             /* We can consider only recognizing major in the future, but micro seems safe to ignore as */
             /* there are no breaking IPC changes in minor updates. */
+#ifdef AMS_ENABLE_STRICT
             {
                 constexpr u32 MaxMajor = (static_cast<u32>(hos::Version_Max) >> 24) & 0xFF;
                 constexpr u32 MaxMinor = (static_cast<u32>(hos::Version_Max) >> 16) & 0xFF;
@@ -52,6 +53,7 @@ namespace ams::hos {
                 const bool is_safely_tryable_version = (g_hos_version <= hos::Version_Max) || (major == MaxMajor && minor <= MaxMinor);
                 AMS_ABORT_UNLESS(is_safely_tryable_version);
             }
+#endif
 
             __atomic_store_n(&g_has_cached, true, __ATOMIC_SEQ_CST);
         }
